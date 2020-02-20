@@ -13,6 +13,12 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	ball_.setSize(sf::Vector2f(32 * 4, 32 * 4));
 	ball_.setPosition(300, 300);
 
+	targeted_ball_.setInput(in);
+	targeted_ball_.setWindow(hwnd);
+	targeted_ball_.setTexture(&ball_texture_);
+	targeted_ball_.setSize(sf::Vector2f(32 * 4, 32 * 4));
+	targeted_ball_.setPosition(0, 0); // Target - Position A
+
 }
 
 Level::~Level()
@@ -24,12 +30,14 @@ Level::~Level()
 void Level::handleInput(float dt)
 {
 	ball_.handleInput(dt);
+	targeted_ball_.handleInput(dt);
 }
 
 // Update game objects
 void Level::update(float dt)
 {
 	ball_.update(dt);
+	targeted_ball_.update(dt);
 }
 
 // Render level
@@ -37,6 +45,7 @@ void Level::render()
 {
 	beginDraw();
 	window->draw(ball_);
+	window->draw(targeted_ball_);
 	endDraw();
 }
 

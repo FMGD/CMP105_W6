@@ -26,7 +26,7 @@ TargetedBall::~TargetedBall()
 void TargetedBall::update(float dt)
 {
 	//target_ = sf::Vector2f(window_->getSize().x - this->getSize().x, window_->getSize().y - this->getSize().y); // Set target to end right of window
-	target_ = sf::Vector2f(input->getMouseX() - (getSize().x / 2), input->getMouseY() - (getSize().y / 2));  // Set target to position of cursor
+	target_ = sf::Vector2f(input->getMouseX() - (getSize().x / 2), input->getMouseY() - (getSize().y / 2));  // Set target to position of cursor (center of object)
 	moveToTarget(dt);
 }
 
@@ -57,7 +57,7 @@ void TargetedBall::moveToTarget(float dt)
 	velocity += (direction_ * acceleration_ ) * dt; // v = u + a*t (accelerate towards the point)
 	sf::Vector2f pos = velocity * dt + 0.5f * (direction_ * acceleration_ ) * dt * dt; // s = ut + 1/2*a*t^2
 
-	std::cout << "Velocity x: " << velocity.x << " Velocity y: " << velocity.y  << "\n";
+	//std::cout << "Velocity x: " << velocity.x << " Velocity y: " << velocity.y  << "\n";
 	
 	//Move
 	setPosition(getPosition() + pos);

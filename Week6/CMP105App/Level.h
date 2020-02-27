@@ -4,6 +4,7 @@
 #include "Framework/Input.h"
 #include "Ball.h"
 #include "TargetedBall.h"
+#include "AngryBird.h"
 #include <string.h>
 #include <iostream>
 
@@ -28,8 +29,11 @@ private:
 
 	// More level variables
 	Ball ball_;
+	TargetedBall targeted_ball_;
 	sf::Texture ball_texture_;
 
-	TargetedBall targeted_ball_;
+	AngryBird angry_bird_;
+
+
 	
 };

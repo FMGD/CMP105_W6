@@ -19,6 +19,12 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	targeted_ball_.setSize(sf::Vector2f(32 * 4, 32 * 4));
 	targeted_ball_.setPosition(0, 0); // Target - Position A
 
+	angry_bird_.setInput(in);
+	angry_bird_.setWindow(hwnd);
+	angry_bird_.setTexture(&ball_texture_);
+	angry_bird_.setSize(sf::Vector2f(32*2, 32*2));
+	angry_bird_.setPosition(0, window->getSize().y - angry_bird_.getSize().y); // Target - Position A
+
 }
 
 Level::~Level()
@@ -31,6 +37,7 @@ void Level::handleInput(float dt)
 {
 	ball_.handleInput(dt);
 	targeted_ball_.handleInput(dt);
+	angry_bird_.handleInput(dt);
 }
 
 // Update game objects
@@ -38,6 +45,7 @@ void Level::update(float dt)
 {
 	ball_.update(dt);
 	targeted_ball_.update(dt);
+	angry_bird_.update(dt);
 }
 
 // Render level
@@ -46,6 +54,7 @@ void Level::render()
 	beginDraw();
 	window->draw(ball_);
 	window->draw(targeted_ball_);
+	window->draw(angry_bird_);
 	endDraw();
 }
 
